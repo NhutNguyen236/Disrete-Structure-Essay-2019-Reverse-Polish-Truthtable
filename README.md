@@ -1,8 +1,17 @@
 # Disrete-Structure-Essay-2019-
 ## Date: 15/10/2019
 ### Nhut Nguyen Minh with love
+## Introduction: 
 In this rep, I commit that I borrowed some codes on the internet and they are, respectively: [link 1](https://github.com/benjameep/truth-table/blob/master/README.md) for truthtable generating from postfix and [link 2](https://rextester.com/VGJZ53355) for infix to postfix generating 
-Programing Language: Python 3.
+
+## Content:
+- Firstly, if your computer does not have any library for excel file exporting, I am sure that you should have one with bash below:
+```bash
+pip install xlwt
+```
+- Programing Language: Python 3.
+**Attention:** "Elsewhere" content or misslead library will be not used in this essay. 
+
 Programing Requirement:
 1. Write function def Infix2Postfix(Infix):
 a. Input: Infix is a string of logical operators (Table 1) and alphabet characters
