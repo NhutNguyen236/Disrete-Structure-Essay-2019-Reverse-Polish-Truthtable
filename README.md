@@ -41,28 +41,32 @@ b. Output: The truth table from the input logic expression Infix.
 Example:
 Input: R|(P&Q)
 Output: (Student must not add header)
- P Q R P&Q R|(P&Q)
-False False False False False
-False False True False True
-False True False False False
-False True True False True
-True False False False False
-True False True False True
-True True False True True
-True True True True True
-TON DUC THANG UNIVERSITY
-Faculty of Information Technology
-Elit.tdtu.edu.vn 2
-Operator Meaning
+ | P | Q | R | P&Q | R|(P&Q) |
+|:-:|:-:|:-:|:---:|:-------:|
+| 0 | 0 | 0 |  0  |    0    |
+| 0 | 0 | 1 |  0  |    1    |
+| 0 | 1 | 0 |  0  |    0    |
+| 0 | 1 | 1 |  0  |    1    |
+| 1 | 0 | 0 |  0  |    0    |
+| 1 | 0 | 1 |  0  |    1    |
+| 1 | 1 | 0 |  1  |    1    |
+| 1 | 1 | 1 |  1  |    1    |
+
+## Operator Meaning
 ( Open parenthesis
-~ Not
-| Or
-& And
-> Implication
-= Bi implication
-) Close parenthesis
-Table 1. Logic Operator with precedence from top to bottom
-Report Requirement:
+| Operator |         Q         |
+|:--------:|:-----------------:|
+|     (    |  Open parenthesis |
+|     ~    |         Not       |
+|     |    |         Or        |
+|     &    |        And        |
+|     >    |    Implication    |
+|     =    |   Bi implication  |
+|     )    | Close parenthesis |
+
+*Table 1. Logic Operator with precedence from top to bottom*
+
+## Report Requirement:
 !!The report should be written individually even if you are in a group of 2.
 Create a Word or Latex document Using the report template and format your document
 as is. The content should cover all the following requirements.
