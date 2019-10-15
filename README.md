@@ -43,7 +43,6 @@ Input: R|(P&Q)
 
 Output: (Student must not add header)
 
-
 |   P   |   Q   |   R   |  P&Q  | R|(P&Q) |
 |:-----:|:-----:|:-----:|:-----:|:-------:|
 | False | False | False | False |  False  |
@@ -54,7 +53,6 @@ Output: (Student must not add header)
 |  True | False |  True | False |   True  |
 |  True |  True | False |  True |   True  |
 |  True |  True |  True |  True |   True  |
-
 
 ## Operator Meaning
 
