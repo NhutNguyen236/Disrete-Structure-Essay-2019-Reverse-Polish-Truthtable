@@ -42,7 +42,7 @@ Example:
 Input: R|(P&Q)
 Output: (Student must not add header)
 
- | P | Q | R | P&Q | R|(P&Q) |
+| P | Q | R | P&Q | R|(P&Q) |
 |:-:|:-:|:-:|:---:|:-------:|
 | 0 | 0 | 0 |  0  |    0    |
 | 0 | 0 | 1 |  0  |    1    |
@@ -54,7 +54,6 @@ Output: (Student must not add header)
 | 1 | 1 | 1 |  1  |    1    |
 
 ## Operator Meaning
-( Open parenthesis
 
 | Operator |         Q         |
 |:--------:|:-----------------:|
