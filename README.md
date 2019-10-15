@@ -43,7 +43,7 @@ Input: R|(P&Q)
 
 Output: (Student must not add header)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/NhutNguyen236/Disrete-Structure-Essay-2019-Reverse-Polish-Truthtable/blob/master/truh.png)
 
 ## Operator Meaning
 
