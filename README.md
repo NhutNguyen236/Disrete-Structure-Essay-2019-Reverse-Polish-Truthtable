@@ -41,6 +41,7 @@ b. Output: The truth table from the input logic expression Infix.
 Example:
 Input: R|(P&Q)
 Output: (Student must not add header)
+
  | P | Q | R | P&Q | R|(P&Q) |
 |:-:|:-:|:-:|:---:|:-------:|
 | 0 | 0 | 0 |  0  |    0    |
@@ -54,6 +55,7 @@ Output: (Student must not add header)
 
 ## Operator Meaning
 ( Open parenthesis
+
 | Operator |         Q         |
 |:--------:|:-----------------:|
 |     (    |  Open parenthesis |
