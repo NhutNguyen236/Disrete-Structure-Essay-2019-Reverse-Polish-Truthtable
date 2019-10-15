@@ -16,8 +16,9 @@ b. Output: The truth table from the input logic expression Infix.
 19000123.py)
 5. Summit your file to appropriate place on https://elit.tdtu.edu.vn/
 Example:
-Input: Output: (Student must not add header)
-R|(P&Q) P Q R P&Q R|(P&Q)
+Input: R|(P&Q)
+Output: (Student must not add header)
+ P Q R P&Q R|(P&Q)
 False False False False False
 False False True False True
 False True False False False
