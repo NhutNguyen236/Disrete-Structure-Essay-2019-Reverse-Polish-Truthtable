@@ -43,16 +43,7 @@ Input: R|(P&Q)
 
 Output: (Student must not add header)
 
-|   P   |   Q   |   R   |  P&Q  | R|(P&Q) |
-|:-----:|:-----:|:-----:|:-----:|:-------:|
-| False | False | False | False |  False  |
-| False | False |  True | False |   True  |
-| False |  True | False | False |  False  |
-| False |  True |  True | False |   True  |
-|  True | False | False | False |  False  |
-|  True | False |  True | False |   True  |
-|  True |  True | False |  True |   True  |
-|  True |  True |  True |  True |   True  |
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 ## Operator Meaning
 
