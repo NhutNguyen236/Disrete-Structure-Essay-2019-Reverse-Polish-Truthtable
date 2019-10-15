@@ -1,6 +1,6 @@
 # Disrete-Structure-Essay-2019-Truth Table Generation from postfix
 ## Date: 15/10/2019
-### Nhut Nguyen Minh with love
+### From Nhut Nguyen Minh with love
 ## Introduction: 
 In this rep, I commit that I borrowed some codes on the internet and they are, respectively: [link 1](https://github.com/benjameep/truth-table/blob/master/README.md) for truthtable generating from postfix and [link 2](https://rextester.com/VGJZ53355) for infix to postfix generating 
 
