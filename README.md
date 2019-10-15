@@ -1,4 +1,4 @@
-# Disrete-Structure-Essay-2019-
+# Disrete-Structure-Essay-2019-Truth Table Generation from postfix
 ## Date: 15/10/2019
 ### Nhut Nguyen Minh with love
 ## Introduction: 
