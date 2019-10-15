@@ -11,22 +11,33 @@ pip install xlwt
 ```
 - Programing Language: Python 3.
 
-**Attention:** *"Elsewhere" content or misslead library will be not used in this essay.* 
+**Attention:** *"Elsewhere" contents or misslead libraries will not be used in this essay.* 
 
-Programing Requirement:
+## Programing Requirement:
 1. Write function def Infix2Postfix(Infix):
+
 a. Input: Infix is a string of logical operators (Table 1) and alphabet characters
 from “A” to “Z” express a logic expression.
+
 b. Output: Postfix is a string calculated from Infix using Reverse Polish notation.
+
 2. Write function def Postfix2Truthtable(Postfix):
+
 a. Input: Postfix from (1.)
+
 b. Output: The truth table from the input logic expression Infix.
+
 * The truth tables should be in alphabet order for initial variables
+
 * Student must not add header to your truth table.
+
 3. Apply your functions on Essay.py (given by Instructors)
+
 4. Change the file name to <StudentID>.py (ex: student 19000123 should make the file
 19000123.py)
+ 
 5. Summit your file to appropriate place on https://elit.tdtu.edu.vn/
+
 Example:
 Input: R|(P&Q)
 Output: (Student must not add header)
