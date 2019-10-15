@@ -4,48 +4,46 @@ import sys
 def implies(lo1,lo2):
     return (not lo1) or lo2
 
-while True:
+x = 'RPQ&|'
 
-    x = input("\n\nEnter Calculation: ").upper()
-
-    vars = []
-    for i in x:
-        print(i,end=' ')
-        if i.isalpha() and not i in vars:
-            vars.append(i)
-
-    for i in range(2**len(vars)):
-        print('')
-        string = bin(i)[2:].rjust(len(vars),'0')
-        bools = list(map((lambda x: True if x=='1' else False), string))
-        a = dict(zip(vars,bools))
-        math = []
-        for j in x:
-            if j.isalpha():
-                math.append(a[j])
-                print(int(a[j]),end=' ')
-            elif j == '&':
-                math[-2] = math[-2] & math[-1]
-                print(int(math[-2]),end=' ')
-                del math[-1]
-            elif j == '|':
-                math[-2] = math[-2] | math[-1]
-                print(int(math[-2]),end=' ')
-                del math[-1]
-            elif j == '=':
-                math[-2] = implies(math[-2],math[-1]) and implies(math[-1],math[-2])
-                print(int(math[-2]),end=' ')
-                del math[-1]
-            elif j == '>':
-                math[-2] = implies(math[-2],math[-1])
-                print(int(math[-2]),end=' ')
-                del math[-1]
-            elif j == '<':
-                math[-2] = implies(math[-1],math[-2])
-                print(int(math[-2]),end=' ')
-                del math[-1] 
-            elif j == '~':
-                math[-1] = not math[-1]
-                print(int(math[-1]),end=' ')
-            else:
-                print("Error: Invalid Character")
+vars = []
+for i in x:
+    #print(i,end=' ')
+    if i.isalpha() and not i in vars:
+        vars.append(i)
+new_vars = sorted(vars)
+for i in range(2**len(new_vars)):
+    print('')
+    string = bin(i)[2:].rjust(len(new_vars),'0')
+    bools = list(map((lambda x: True if x=='1' else False), string))
+    a = dict(zip(new_vars,bools))
+    math = []
+    for j in x:
+        if j.isalpha():
+            math.append(a[j])
+            print(int(a[j]),end=' ')
+        elif j == '&':
+            math[-2] = math[-1] & math[-2]
+            print(int(math[-2]),end=' ')
+            del math[-1]
+        elif j == '|':
+            math[-2] = math[-1] | math[-2]
+            print(int(math[-2]),end=' ')
+            del math[-1]
+        elif j == '=':
+            math[-2] = implies(math[-2],math[-1]) and implies(math[-1],math[-2])
+            print(int(math[-2]),end=' ')
+            del math[-1]
+        elif j == '>':
+            math[-2] = implies(math[-2],math[-1])
+            print(int(math[-2]),end=' ')
+            del math[-1]
+        elif j == '<':
+            math[-2] = implies(math[-1],math[-2])
+            print(int(math[-2]),end=' ')
+            del math[-1] 
+        elif j == '~':
+            math[-1] = not math[-1]
+            print(int(math[-1]),end=' ')
+        else:
+            print("Error: Invalid Character")
