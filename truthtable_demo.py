@@ -29,13 +29,14 @@ for i in range(2**len(new_vars)):
     print('')
     string = bin(i)[2:].zfill(len(new_vars))
     bools = list(map((lambda x: True if x=='1' else False), string))
+    math.append(bools)
     a = dict(zip(new_vars,bools))
-    print(a)
     for j in  "".join(OrderedDict.fromkeys(x)):
         if j.isalpha():
-            math1.append(a[j])
-            
+            print(int(a[j]),end=' ')
 print('\n','====================')
+A=[tuple(a) for a in math]
+print(A)
 #For operator group up
 math2 = []
 math3 = []
@@ -80,7 +81,13 @@ for i in range(2**len(new_vars_y)):
             math3.append(math2[-1])
         else:
             print("Error: Invalid Character")
-            
+print('\n=======================')          
 y = zip(*[iter(math3)]*numopt)
-z = list(y)
-print(z)
+B = list(y)
+print(B)
+print(len(A),len(B))
+#Sum of A and B to complete truth table
+D = []
+for i in range(0,len(B)):
+    D.append(A[i]+B[i])
+print(D)
