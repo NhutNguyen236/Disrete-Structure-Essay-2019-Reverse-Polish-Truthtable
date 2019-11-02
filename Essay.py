@@ -4,52 +4,138 @@ def readInfix(filename):
         Infix = f.readlines()
     return Infix[0]
 ##########################################Student do these 2 function
-class Stack:
+#Illustrating a stack class
+class Stack:#tao mot kieu du lieu stack de tinh toan
     def __init__(self):
         self.items = []
+        self.length = 0
         
-    def isEmpty(self):
-        return self.items == []
-
-    def push(self, item):
-        self.items.insert(0,item)
-
+    def push(self, val):
+        self.items.append(val)
+        self.length += 1
+        
     def pop(self):
-        return self.items.pop(0)
-
-    def peek(self):
-        return self.items[0]
-
+        if self.empty():
+            return None
+        self.length -= 1
+        return self.items.pop()
+        
     def size(self):
-        return len(self.items)
+        return self.length
+    
+    def peek(self):#in item moi duoc them vao
+        if self.empty():
+            return None
+        return self.items[self.size()-1]
+    
+    def empty(self):
+        return self.length == 0
+    
+    def __str__(self):
+        return str(self.items)
+precedence = {'(':1,'~':5,'&':4,'|':3,'>':2,'=':1}#phan chia do uu tien
+#   
 def Infix2Postfix(Infix):
-    prec = {"(":1, "~":2, "|":3, "&":3, ">":4, "=":4}
-
-    stack = Stack()
-    postfix_list = []
-    token_list = Infix
-
-    for token in token_list:
-        if token.isalpha():
-            postfix_list.append(token)
+    space = ' '
+    Infix = space.join(Infix)
+    tokens = Infix.split()
+    Postfix=[]
+    opstack = Stack()
+    for token in tokens:
+        if token.isidentifier():
+            Postfix.append(token)
         elif token == '(':
-            stack.push(token)
+            opstack.push(token)
         elif token == ')':
-            top_token = stack.pop()
-            while top_token != '(':
-                postfix_list.append(top_token)
-                top_token = stack.pop()
+            while True:
+                temp = opstack.pop()
+                if temp is None or temp == '(':
+                    break
+                elif not temp.isidentifier():
+                    Postfix.append(temp)
         else:
-            while (not stack.isEmpty()) and (prec[stack.peek()] >= prec[token]) and token.isalpha():
-                  postfix_list.append(stack.pop())
-                  print(postfix_list)
-            stack.push(token)
-    while not stack.isEmpty():
-        postfix_list.append(stack.pop())
-    Postfix = "".join(postfix_list)
+            if not opstack.empty():
+                temp = opstack.peek()
+                while not opstack.empty() and precedence[temp] >= precedence[token]:
+                    Postfix.append(opstack.pop())
+                    temp = opstack.peek()
+            opstack.push(token)
+    while not opstack.empty():
+        Postfix.append(opstack.pop())
+    final =''
+    Postfix = final.join(Postfix)
+    print(Postfix)
     return Postfix
+def implies(lo1,lo2):
+    return (not lo1) or lo2
 def Postfix2Truthtable(Postfix):
-    Truthtable=Postfix
+    #Count number of operrands
+    opd = []
+    for i in Postfix:
+        if i.isalpha() and not i in opd:
+            opd.append(i)
+    #create order for opd
+    order_opd = sorted(opd)
+    order_opd_new = opd
+    #number of rows
+    rows = 2**len(order_opd)
+    #creat an empty sub_truthtable :)
+    sub = []
+    for i in range(rows):
+        string = bin(i)[2:].zfill(len(order_opd))
+        bools = list(map((lambda x: True if x=='1' else False),string))
+        sub.append(bools)
+    #turn sub_truthtable into tuple ready for mounting
+    A = [tuple(x) for x in sub]
+    print(A)
+    #temp list for element assignment math2,3
+    math2 = []
+    math3 = []
+    for i in range(rows):
+        string = bin(i)[2:].zfill(len(order_opd))
+        bools = list(map((lambda x: True if x=='1' else False),string))
+        a = dict(zip(order_opd,bools))
+        for j in Postfix:
+            if j.isalpha():
+                math2.append(a[j])
+            elif j =='&':
+                math2[-2] = math2[-1] and math2[-2]
+                math3.append(math2[-2])
+                del math2[-1]
+            elif j =='|':
+                math2[-2] = math2[-1] or math2[-2]
+                math3.append(math2[-2])
+                del math2[-1]
+            elif j == '=':
+                math2[-2] = implies(math2[-2],math2[-1]) and implies(math2[-1],math2[-2])
+                math3.append(math2[-2])
+                del math2[-1]
+            elif j == '>':
+                math2[-2] = implies(math2[-2],math2[-1])
+                math3.append(math2[-2])
+                del math2[-1]
+            elif j == '~':
+                math2[-1] = not math2[-1]
+                math3.append(math2[-1])
+            else:
+                print("Error: Invalid Character")
+    #create an empty truthtable waiting for tuple up :)
+    Truthtable = []
+    #couting number of operators
+    opt_lst = []
+    for i in Postfix:
+        if not i.isalpha():
+            opt_lst.append(i)
+    numopt = len(opt_lst)
+    print(opt_lst)
+    #Splitting the second table into 'numopt' of tuple 
+    y = zip(*[iter(math3)]*numopt)
+    B = list(y)
+    print(B)
+    #Tuple up the truthtable
+    for i in range(0,len(B)):
+        Truthtable.append(A[i]+B[i])
+    #print(Truthtable)
     return Truthtable
 ##########################################End student part
 def writeTruthtable(table):
