@@ -5,7 +5,7 @@ def readInfix(filename):
     return Infix[0]
 ##########################################Student do these 2 function
 #Illustrating a stack class
-class Stack:#tao mot kieu du lieu stack de tinh toan
+class Stack:
     def __init__(self):
         self.items = []
         self.length = 0
@@ -33,8 +33,7 @@ class Stack:#tao mot kieu du lieu stack de tinh toan
     
     def __str__(self):
         return str(self.items)
-precedence = {'(':1,'~':5,'&':4,'|':3,'>':2,'=':1}#phan chia do uu tien
-#   
+precedence = {'(':1,'~':5,'&':4,'|':3,'>':2,'=':1}
 def Infix2Postfix(Infix):
     space = ' '
     Infix = space.join(Infix)
@@ -66,8 +65,10 @@ def Infix2Postfix(Infix):
     Postfix = final.join(Postfix)
     print(Postfix)
     return Postfix
+#Define function of implication
 def implies(lo1,lo2):
     return (not lo1) or lo2
+
 def Postfix2Truthtable(Postfix):
     #Count number of operrands
     opd = []
