@@ -33,41 +33,41 @@ class Stack:
     
     def __str__(self):
         return str(self.items)
-precedence = {'(':1,'~':5,'&':4,'|':3,'>':2,'=':1}
+# Precedence for each operator
+precedence = {'(':0,'~':5,'&':4,'|':3,'>':2,'=':1}
 def Infix2Postfix(Infix):
-    bar = ' '
-    Infix = bar.join(Infix)
+    Infix = ' '.join(Infix)
     tokens = Infix.split()
     Postfix=[]
-    opstack = Stack()
+    stack = Stack()
     for token in tokens:
-        if token.isidentifier():
+        if token.isalpha():
             Postfix.append(token)
         elif token == '(':
-            opstack.push(token)
+            stack.push(token)
         elif token == ')':
             while True:
-                temp = opstack.pop()
+                temp = stack.pop()
                 if temp is None or temp == '(':
                     break
-                elif not temp.isidentifier():
+                elif not temp.isalpha():
                     Postfix.append(temp)
+        elif token == '~' and stack.peek() == '~':
+                stack.push(token)
         else:
-            if not opstack.empty():
-                temp = opstack.peek()
-                while not opstack.empty() and precedence[temp] >= precedence[token]:
-                    Postfix.append(opstack.pop())
-                    temp = opstack.peek()
-            opstack.push(token)
-    while not opstack.empty():
-        Postfix.append(opstack.pop())
+            if not stack.empty():
+                temp = stack.peek()
+                while not stack.empty() and precedence[temp] >= precedence[token]:
+                    Postfix.append(stack.pop())
+                    temp = stack.peek()
+            stack.push(token)
+    while not stack.empty():
+        Postfix.append(stack.pop())
     Postfix = ''.join(Postfix)
     print(Postfix)
     return Postfix
-#Define function of implication
 def implies(lo1,lo2):
     return (not lo1) or lo2
-
 def Postfix2Truthtable(Postfix):
     #Count number of operrands
     opd = []
@@ -118,7 +118,7 @@ def Postfix2Truthtable(Postfix):
                 math2[-1] = not math2[-1]
                 math3.append(math2[-1])
             else:
-                print("Error: Invalid Character")
+                math3.append("Invalid")
     #create an empty truthtable waiting for tuple up :)
     Truthtable = []
     #couting number of operators
@@ -127,16 +127,14 @@ def Postfix2Truthtable(Postfix):
         if not i.isalpha():
             opt_lst.append(i)
     numopt = len(opt_lst)
+    print(opt_lst)
     #Splitting the second table into 'numopt' of tuple 
     y = zip(*[iter(math3)]*numopt)
     B = list(y)
-    if len(B)==0 and len(A)!=0:
-        for i in range(0,len(A)):
-            Truthtable.append(A[i])
-    else:
-        #Tuple up the truthtable
-        for i in range(0,len(B)):
-            Truthtable.append(A[i]+B[i])
+    print(B)
+    #Tuple up the truthtable
+    for i in range(0,len(B)):
+        Truthtable.append(A[i]+B[i])
     #print(Truthtable)
     return Truthtable
 ##########################################End student part
