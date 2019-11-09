@@ -23,7 +23,7 @@ class Stack:
     def size(self):
         return self.length
     
-    def peek(self):#in item moi duoc them vao
+    def peek(self):
         if self.empty():
             return None
         return self.items[self.size()-1]
