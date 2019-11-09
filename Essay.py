@@ -35,8 +35,8 @@ class Stack:
         return str(self.items)
 precedence = {'(':1,'~':5,'&':4,'|':3,'>':2,'=':1}
 def Infix2Postfix(Infix):
-    space = ' '
-    Infix = space.join(Infix)
+    bar = ' '
+    Infix = bar.join(Infix)
     tokens = Infix.split()
     Postfix=[]
     opstack = Stack()
@@ -61,8 +61,7 @@ def Infix2Postfix(Infix):
             opstack.push(token)
     while not opstack.empty():
         Postfix.append(opstack.pop())
-    final =''
-    Postfix = final.join(Postfix)
+    Postfix = ''.join(Postfix)
     print(Postfix)
     return Postfix
 #Define function of implication
@@ -128,11 +127,9 @@ def Postfix2Truthtable(Postfix):
         if not i.isalpha():
             opt_lst.append(i)
     numopt = len(opt_lst)
-    print(opt_lst)
     #Splitting the second table into 'numopt' of tuple 
     y = zip(*[iter(math3)]*numopt)
     B = list(y)
-    print(B)
     if len(B)==0 and len(A)!=0:
         for i in range(0,len(A)):
             Truthtable.append(A[i])
@@ -141,7 +138,6 @@ def Postfix2Truthtable(Postfix):
         for i in range(0,len(B)):
             Truthtable.append(A[i]+B[i])
     #print(Truthtable)
-    print(Truthtable)
     return Truthtable
 ##########################################End student part
 def writeTruthtable(table):
