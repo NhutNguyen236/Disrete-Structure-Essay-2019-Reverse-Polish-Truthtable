@@ -36,7 +36,9 @@ class Stack:
 # Precedence for each operator
 precedence = {'(':0,'~':5,'&':4,'|':3,'>':2,'=':1}
 def Infix2Postfix(Infix):
+    #wrap infix up into one place when there are spaces 
     Infix = ' '.join(Infix)
+    #break Infix into chunks which called token then store in tokens 
     tokens = Infix.split()
     Postfix=[]
     stack = Stack()
@@ -64,10 +66,12 @@ def Infix2Postfix(Infix):
     while not stack.empty():
         Postfix.append(stack.pop())
     Postfix = ''.join(Postfix)
-    print(Postfix)
     return Postfix
+
+# Define an implication function 
 def implies(lo1,lo2):
     return (not lo1) or lo2
+
 def Postfix2Truthtable(Postfix):
     #Count number of operrands
     opd = []
@@ -87,7 +91,6 @@ def Postfix2Truthtable(Postfix):
         sub.append(bools)
     #turn sub_truthtable into tuple ready for mounting
     A = [tuple(x) for x in sub]
-    print(A)
     #temp list for element assignment math2,3
     math2 = []
     math3 = []
@@ -127,15 +130,12 @@ def Postfix2Truthtable(Postfix):
         if not i.isalpha():
             opt_lst.append(i)
     numopt = len(opt_lst)
-    print(opt_lst)
     #Splitting the second table into 'numopt' of tuple 
     y = zip(*[iter(math3)]*numopt)
     B = list(y)
-    print(B)
     #Tuple up the truthtable
     for i in range(0,len(B)):
         Truthtable.append(A[i]+B[i])
-    #print(Truthtable)
     return Truthtable
 ##########################################End student part
 def writeTruthtable(table):
